@@ -56,8 +56,47 @@ namespace cis237inclass1
                 }
             }
 
+            //We are creating a new UI class, and it's ok 
+            //that the UI class does not have a defined 
+            //constructor.  It will habe a defaul one provided to us that 
+            //we can take advantage of bu just not passing in any parameters
+            UI ui = new UI();
 
+            //Call the GetUserInput method of the UI class.  It will return
+            //a valid interger that represents the choice they want to do.
+            int choice = ui.GetUserInput();
 
+            //while the choice is not the exit choice (which in the case is 2)
+            //
+            while(choice != 2)
+            {
+                //if the choice is 1, which in the case it has to be, but if there
+                //were more menu options it might not be so obvious.
+                if (choice == 1)
+                {
+                    //Create a empty sting to concat to.
+                    string allOutput = "";
+                    //For each Employee in the employees array.
+                    foreach(Employee employee in employees)
+                    {
+                        //So long as the spot in the array is not null
+                        if (employee != null)
+                        {
+                            //Concact the employee change to a string plus a new line
+                            //to the allOutput string.
+                            allOutput += employee.ToString() + Environment.NewLine;
+                        }
+                    }
+                    //Now the the large string containing what I would like to output
+                    //is created, I can output it to the screen using the 
+                    //PrintAllOutput method of the UI class.
+                    ui.PrintAllOutput(allOutput);
+                
+                }
+                //Now that the 'work' that we wanted to do it done.
+                //we need to re-promt the use for some input
+                choice = ui.GetUserInput();
+            }
 
 
 
